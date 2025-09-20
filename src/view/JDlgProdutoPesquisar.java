@@ -90,7 +90,7 @@ JDlgProduto jDlgProduto;
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         int linSel = jTable1.getSelectedRow();
-        
+        setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

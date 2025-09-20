@@ -15,7 +15,7 @@ public class JDlgProduto extends javax.swing.JDialog {
     public JDlgProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Produtos");
+        setTitle("Cadastro de Funcionarios");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtDescricao,
                 jTxtTamanho, jTxtSabor, jTxtDisponivel, jTxtPreco,
@@ -290,7 +290,7 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-       Util.habilitar(false, jTxtNome, jTxtDescricao,
+        Util.habilitar(false, jTxtNome, jTxtDescricao,
                 jTxtTamanho, jTxtSabor, jTxtDisponivel, jTxtPreco,
                 jBtnConfirmar, jBtnCancelar);
                 

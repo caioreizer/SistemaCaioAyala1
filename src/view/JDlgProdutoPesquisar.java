@@ -4,8 +4,6 @@
  */
 package view;
 
-import bean.Produto;
-import dao.ProdutoDao;
 import java.util.List;
 
 /**
@@ -14,7 +12,6 @@ import java.util.List;
  */
 public class JDlgProdutoPesquisar extends javax.swing.JDialog {
 
-ControllerProduto controllerProduto;
 JDlgProduto jDlgProduto;
     /**
      * Creates new form JDlgUsuariosPesquisar
@@ -22,14 +19,9 @@ JDlgProduto jDlgProduto;
     public JDlgProdutoPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pesquisar produtos");
+        setTitle("Pesquisar Produtos");
         setLocationRelativeTo(null);
-        controllerProduto = new ControllerProduto();
-        ProdutoDao produtoDao = new ProdutoDao();
-        List lista = (List) produtoDao.listAll();
-        controllerProduto.setList(lista);
-        jTable1.setModel(controllerProduto);
-        
+    
     }
     
     public void setTelaPai(JDlgProduto jDlgProduto){
@@ -98,9 +90,7 @@ JDlgProduto jDlgProduto;
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         int linSel = jTable1.getSelectedRow();
-        Produto produto = (Produto) controllerProduto.getBean(linSel);
-        jDlgProduto.beanView(produto);
-         setVisible(false);
+        
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

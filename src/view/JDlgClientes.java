@@ -1,138 +1,39 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package view;
 
+import tools.Util;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.MaskFormatter;
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 /**
  *
- * @author Admin
+ * @author u05084603105
  */
 public class JDlgClientes extends javax.swing.JDialog {
 
-    boolean incluir = false;
-    private MaskFormatter mascaraCpf, mascaraDataNasc;
 
-    /**
-     * Creates new form JDlgClientes
-     */
+
+
     public JDlgClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Clientes");
+        setTitle("Cadastro de Clientes");
         setLocationRelativeTo(null);
-        desabilitar();
-        try {
-            mascaraCpf = new MaskFormatter("###.###.###-##");
-            mascaraDataNasc = new MaskFormatter("##/##/####");
-            jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
-            jFmtDataNascimento.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
-        } catch (ParseException ex) {
-            Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void habilitar() {
-        jBtnConfirmar.setEnabled(true);
-        jBtnCancelar.setEnabled(true);
-        jTxtCodigo.setEnabled(true);
-        jTxtNome.setEnabled(true);
-        jTxtNumeroCasa.setEnabled(true);
-        jFmtCpf.setEnabled(true);
-        jFmtDataNascimento.setEnabled(true);
-        jTxtComplemento.setEnabled(true);
-        jTxtTelefone.setEnabled(true);
-        jTxtCidade.setEnabled(true);
-        jTxtEmail.setEnabled(true);
-        jTxtEndereco.setEnabled(true);
-        jTxtCep.setEnabled(true);
-        jTxtCelular.setEnabled(true);
-        jTxtEstado.setEnabled(true);
-        jPwdSenha.setEnabled(true);
-        jCboStatus.setEnabled(true);
-        jBtnIncluir.setEnabled(false);
-        jBtnAlterar.setEnabled(false);
+        Util.habilitar(false, jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jTxtCep, jTxtComplemento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jTxtTelefone,jBtnConfirmar, jBtnCancelar);
 
     }
 
-    public void desabilitar() {
-        jBtnConfirmar.setEnabled(false);
-        jBtnCancelar.setEnabled(false);
-        jTxtCodigo.setEnabled(false);
-        jTxtNome.setEnabled(false);
-        jTxtNumeroCasa.setEnabled(false);
-        jFmtCpf.setEnabled(false);
-        jFmtDataNascimento.setEnabled(false);
-        jTxtComplemento.setEnabled(false);
-        jTxtTelefone.setEnabled(false);
-        jTxtCidade.setEnabled(false);
-        jTxtEmail.setEnabled(false);
-        jTxtEndereco.setEnabled(false);
-        jTxtCep.setEnabled(false);
-        jTxtCelular.setEnabled(false);
-        jTxtEstado.setEnabled(false);
-        jPwdSenha.setEnabled(false);
-        jBtnIncluir.setEnabled(true);
-        jCboStatus.setEnabled(false);
-        jBtnAlterar.setEnabled(true);
-
+    private JDlgClientes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
-    public void limpar() {
-        jTxtCodigo.setText("");
-        jTxtNome.setText("");
-        jTxtNumeroCasa.setText("");
-        jFmtCpf.setText("");
-        jFmtDataNascimento.setText("");
-        jTxtComplemento.setText("");
-        jTxtTelefone.setText("");
-        jTxtCidade.setText("");
-        jTxtEmail.setText("");
-        jTxtEndereco.setText("");
-        jTxtCep.setText("");
-        jTxtCelular.setText("");
-        jTxtEstado.setText("");
-        jPwdSenha.setText("");
-        jCboStatus.setSelectedIndex(-1);
-
-    }
-
-    public void beanView(Clientes clientes) {
-        String codigo = String.valueOf(clientes.getCra_idclientes());
-        jTxtCodigo.setText(codigo);
-        jTxtNome.setText(clientes.getCra_nome());
-        jTxtNumeroCasa.setText(clientes.getCra_numeroDaCasa());
-        jFmtCpf.setText(clientes.getCra_cpf());
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        String dataNasc = formato.format(clientes.getCra_dataNascimento());
-        jFmtDataNascimento.setText(dataNasc);
-        jTxtComplemento.setText(clientes.getCra_complemento());
-        jTxtTelefone.setText(clientes.getCra_telefone());
-        jTxtCidade.setText(clientes.getCra_cidade());
-        jTxtEmail.setText(clientes.getCra_email());
-        jTxtEndereco.setText(clientes.getCra_enderecos());
-        jTxtCep.setText(clientes.getCra_cep());
-        jTxtCelular.setText(clientes.getCra_celular());
-        jTxtEstado.setText(clientes.getCra_estado());
-        jPwdSenha.setText(clientes.getCra_senha());
-        jCboStatus.setSelectedItem(clientes.getCra_status());
-
-    }
-
+    
     /**
-     *
-     * /**
-     * /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
@@ -553,48 +454,25 @@ public class JDlgClientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        // TODO add your handling code here:
-        Clientes clientes = new Clientes();
-        int cod = Integer.parseInt(jTxtCodigo.getText());
-        clientes.setCra_idclientes(cod);
-        clientes.setCra_nome(jTxtNome.getText());
-        clientes.setCra_cidade(jTxtCidade.getText());
-        clientes.setCra_celular(jTxtCelular.getText());
-        clientes.setCra_complemento(jTxtComplemento.getText());
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date dataNasc = formato.parse(jFmtDataNascimento.getText());
-            clientes.setCra_dataNascimento(dataNasc);
-        } catch (ParseException ex) {
-            Logger.getLogger(JDlgClientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        clientes.setCra_email(jTxtEmail.getText());
-        clientes.setCra_enderecos(jTxtEndereco.getText());
-        clientes.setCra_numeroDaCasa(jTxtNumeroCasa.getText());
-        clientes.setCra_senha(jPwdSenha.getText());
-        clientes.setCra_telefone(jTxtTelefone.getText());
-        clientes.setCra_cpf(jFmtCpf.getText());
-        clientes.setCra_cep(jTxtCep.getText());
-        clientes.setCra_status(jCboStatus.getSelectedIndex());
-        clientes.setCra_estado(jTxtEstado.getText());
-
-        ClientesDao clientesDao = new ClientesDao();
-
-        if (incluir == true) {
-            clientesDao.insert(clientes);
-        } else {
-            clientesDao.update(clientes);
-        }
-
-        desabilitar();
-        limpar();
+        Util.habilitar(false, jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jTxtCep, jTxtComplemento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jTxtTelefone,jBtnConfirmar, jBtnCancelar);
+                
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+          Util.limpar(jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jTxtCep, jTxtComplemento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jTxtTelefone); // TODO add your handling code here:
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-        // TODO add your handling code here:
-        desabilitar();
-        limpar();
+      Util.habilitar(false, jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jTxtCep, jTxtComplemento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jTxtTelefone,jBtnConfirmar, jBtnCancelar);
+                
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+          Util.limpar(jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jTxtCep, jTxtComplemento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jTxtTelefone); // TODO add your handling code here:
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed
@@ -606,12 +484,11 @@ public class JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtCodigoActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        // TODO add your handling code here:
-            habilitar();
-            limpar();
-            incluir = true;
-            jTxtCodigo.setEnabled(true);
-            jTxtCodigo.grabFocus(); // foco no campo código
+    Util.habilitar(true, jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jTxtCep, jTxtComplemento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jTxtTelefone,jBtnConfirmar, jBtnCancelar);
+                
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jCboStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboStatusActionPerformed
@@ -619,15 +496,11 @@ public class JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jCboStatusActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
-         if (jTxtCodigo.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Pesquise um usuário antes de alterar.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        return; // cancela a operação
-     }
-        incluir = false;
-        habilitar();
-        jTxtNome.grabFocus();
-        jTxtCodigo.setEnabled(false);
+         Util.habilitar(true, jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jTxtCep, jTxtComplemento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jTxtTelefone,jBtnConfirmar, jBtnCancelar);
+                
+        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jFmtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCpfActionPerformed
@@ -679,41 +552,7 @@ public class JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtEstadoActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        // TODO add your handling code here:
-     if (jTxtCodigo.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Pesquise um usuário antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        return; // cancela a operação
-     }
-        
-        int resp = JOptionPane.showConfirmDialog(null, "Deseja excluir ?");
-        if (resp == JOptionPane.YES_OPTION) {
-            Clientes clientes = new Clientes();
-            int cod = Integer.parseInt(jTxtCodigo.getText());
-            clientes.setCra_idclientes(cod);
-            clientes.setCra_nome(jTxtNome.getText());
-            clientes.setCra_numeroDaCasa(jTxtNumeroCasa.getText());
-            clientes.setCra_cpf(jFmtCpf.getText());
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                Date dataNasc = formato.parse(jFmtDataNascimento.getText());
-                clientes.setCra_dataNascimento(dataNasc);
-            } catch (ParseException ex) {
-                Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            clientes.setCra_senha(jPwdSenha.getText());
-            clientes.setCra_telefone(jTxtTelefone.getText());
-            clientes.setCra_complemento(jTxtComplemento.getText());
-            clientes.setCra_enderecos(jTxtEndereco.getText());
-            clientes.setCra_cep(jTxtCep.getText());
-            clientes.setCra_cidade(jTxtCidade.getText());
-            clientes.setCra_celular(jTxtCelular.getText());
-            clientes.setCra_estado(jTxtEstado.getText());
-            clientes.setCra_status(jCboStatus.getSelectedIndex());
-
-            ClientesDao clientesDao = new ClientesDao();
-            clientesDao.delete(clientes);
-        }
-        limpar();
+       Util.pergunta("Desja excluir??");  
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

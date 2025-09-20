@@ -19,7 +19,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     public JDlgFuncionarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Cadastro de Usuários");
+        setTitle("Cadastro de Funcionários");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar);
 
@@ -163,51 +163,52 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTxtNome)
-                        .addComponent(jTxtCodigo)
-                        .addComponent(jTxtCpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
-                    .addComponent(jLabel5)
-                    .addComponent(jTxtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(jBtnConfirmar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnPesquisar)
+                        .addGap(0, 31, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel7))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTxtDataAdmissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(jTxtCelular, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtSalarios, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(jBtnConfirmar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBtnPesquisar)
-                .addGap(0, 17, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTxtNome)
+                                .addComponent(jTxtCodigo)
+                                .addComponent(jTxtCpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                            .addComponent(jLabel5)
+                            .addComponent(jTxtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(289, 289, 289)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel7))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTxtDataAdmissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                                    .addComponent(jTxtCelular, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTxtSalarios, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,13 +258,12 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                         .addComponent(jTxtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+                    .addComponent(jBtnIncluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBtnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBtnConfirmar))
-                    .addComponent(jBtnIncluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBtnConfirmar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
 
@@ -288,90 +288,38 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        desabilitar();
-        limpar();
+        Util.habilitar(false,  jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar);
+
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-         if (jTxtCodigo.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Pesquise um funcionário antes de alterar.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        return; // cancela a operação
-     }
-        incluir = false; 
-        habilitar();
-        jTxtNome.grabFocus();
-        jTxtCodigo.setEnabled(false);
+     Util.habilitar(false,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar,
+                jBtnConfirmar, jBtnCancelar);
+                
+       Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-        // TODO add your handling code here:
-            habilitar();
-            limpar();
-            incluir = true;
-            jTxtCodigo.setEnabled(true);
-             jTxtCodigo.grabFocus(); // foco no campo código
+         Util.habilitar(false, jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar,
+                jBtnConfirmar, jBtnCancelar);
+                
+       Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-        // TODO add your handling code here:
-        Funcionarios funcionarios = new Funcionarios();
-        int cod = Integer.parseInt(jTxtCodigo.getText());
-        funcionarios.setCra_id_funcionarios(cod);
-        funcionarios.setCra_nome(jTxtNome.getText());   
-        funcionarios.setCra_cargo(jTxtCargo.getText());
-        funcionarios.setCra_cpf(jTxtCpf.getText());
-        funcionarios.setCra_celular(jTxtCelular.getText());
-       SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date dataAdmi = formato.parse(jTxtDataAdmissao.getText());
-            funcionarios.setCra_dataAdmissao(dataAdmi);
-        } catch (ParseException ex) {
-            Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        funcionarios.setCra_salarios(Double.valueOf(jTxtSalarios.getText()));
-       
-      
-        FuncionariosDao funcionariosDao = new FuncionariosDao();
-        
-        if(incluir == true){
-        funcionariosDao.insert(funcionarios);
-        }else {
-        funcionariosDao.update(funcionarios);
-        }
+          Util.habilitar(false,  jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar);
 
-        
-        desabilitar(); 
-         limpar();
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
       if (jTxtCodigo.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Pesquise um usuário antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        return; // cancela a operação
-     }
-        int resp = JOptionPane.showConfirmDialog(null, "Deseja excluir ?");
-        if (resp == JOptionPane.YES_OPTION) {
-            Funcionarios funcionarios = new Funcionarios();
-            int cod = Integer.parseInt(jTxtCodigo.getText());
-            funcionarios.setCra_id_funcionarios(cod);
-            funcionarios.setCra_nome(jTxtNome.getText());
-            funcionarios.setCra_cargo(jTxtCargo.getText());
-            funcionarios.setCra_celular(jTxtCelular.getText());
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date dataAdmi = formato.parse(jTxtDataAdmissao.getText());
-            funcionarios.setCra_dataAdmissao(dataAdmi);
-        } catch (ParseException ex) {
-            Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            funcionarios.setCra_salarios(Double.valueOf(jTxtSalarios.getText()));
-            
-            FuncionariosDao funcionariosDao = new FuncionariosDao();
-            funcionariosDao.delete(funcionarios);
-        }
-        limpar();
-        
+        Util.pergunta("Desja excluir??");  
+         }
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

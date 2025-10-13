@@ -4,33 +4,40 @@
  */
 package view;
 
-
+import bean.CraFuncionario;
+import bean.CraProduto;
+import dao.FuncionariosDAO;
 import java.util.List;
+import view.JDlgFuncionarios;
 
 /**
  *
- * @author u05084603105
+ * @author Marcos
  */
 public class JDlgFuncionariosPesquisar extends javax.swing.JDialog {
-
-  JDlgFuncionarios jDlgFuncionarios;
-
 
     /**
      * Creates new form JDlgUsuariosPesquisar
      */
+    private JDlgFuncionarios jDlgFuncionarios;
+    ControllerFuncionarios controllerFuncionarios;
+    
     public JDlgFuncionariosPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pesquisar Funcionários");
         setLocationRelativeTo(null);
-        
-        
+        setTitle("Pesquisar Funcionários");
+        controllerFuncionarios= new ControllerFuncionarios();
+        FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+        List lista = (List) funcionariosDAO.listAll();
+        controllerFuncionarios.setList(lista);
+        jTable1.setModel(controllerFuncionarios);
+    }
+
+    public void setTelaAnterior( JDlgFuncionarios jDlgFuncionarios) {
+        this.jDlgFuncionarios = jDlgFuncionarios;
     }
     
-    public void setTelaPai(JDlgFuncionarios jDlgFuncionarios){
-    this.jDlgFuncionarios = jDlgFuncionarios;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,8 +101,9 @@ public class JDlgFuncionariosPesquisar extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-         setVisible(false);
+       CraFuncionario funcionarios =  controllerFuncionarios.getBean( jTable1.getSelectedRow() );
+        jDlgFuncionarios.beanView(funcionarios);
+        this.setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

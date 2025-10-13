@@ -27,13 +27,13 @@ public class CrsUsuarios  implements java.io.Serializable {
      private Date craDataNascimento;
      private String craSenha;
      private int craNivel;
-     private char craAtivo;
+     private String craAtivo;
 
     public CrsUsuarios() {
     }
 
 	
-    public CrsUsuarios(int craIdUsuarios, String craNome, String craCpf, Date craDataNascimento, String craSenha, int craNivel, char craAtivo) {
+    public CrsUsuarios(int craIdUsuarios, String craNome, String craCpf, Date craDataNascimento, String craSenha, int craNivel, String craAtivo) {
         this.craIdUsuarios = craIdUsuarios;
         this.craNome = craNome;
         this.craCpf = craCpf;
@@ -42,7 +42,7 @@ public class CrsUsuarios  implements java.io.Serializable {
         this.craNivel = craNivel;
         this.craAtivo = craAtivo;
     }
-    public CrsUsuarios(int craIdUsuarios, String craNome, String craApelido, String craCpf, Date craDataNascimento, String craSenha, int craNivel, char craAtivo) {
+    public CrsUsuarios(int craIdUsuarios, String craNome, String craApelido, String craCpf, Date craDataNascimento, String craSenha, int craNivel, String craAtivo) {
        this.craIdUsuarios = craIdUsuarios;
        this.craNome = craNome;
        this.craApelido = craApelido;
@@ -127,11 +127,11 @@ public class CrsUsuarios  implements java.io.Serializable {
 
     
     @Column(name="cra_ativo", nullable=false, length=1)
-    public char getCraAtivo() {
+    public String getCraAtivo() {
         return this.craAtivo;
     }
     
-    public void setCraAtivo(char craAtivo) {
+    public void setCraAtivo(String craAtivo) {
         this.craAtivo = craAtivo;
     }
 

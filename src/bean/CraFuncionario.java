@@ -2,15 +2,12 @@ package bean;
 // Generated 12/10/2025 19:55:43 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,15 +27,15 @@ public class CraFuncionario  implements java.io.Serializable {
      private String craCpf;
      private String craCargo;
      private String craCelular;
-     private BigDecimal craSalario;
+     private Double craSalario;
      private Date craDataAdmissao;
-     private Set craVendases = new HashSet(0);
+
 
     public CraFuncionario() {
     }
 
 	
-    public CraFuncionario(int craIdFuncionario, String craNome, String craCpf, String craCargo, String craCelular, BigDecimal craSalario) {
+    public CraFuncionario(int craIdFuncionario, String craNome, String craCpf, String craCargo, String craCelular, Double craSalario) {
         this.craIdFuncionario = craIdFuncionario;
         this.craNome = craNome;
         this.craCpf = craCpf;
@@ -46,7 +43,7 @@ public class CraFuncionario  implements java.io.Serializable {
         this.craCelular = craCelular;
         this.craSalario = craSalario;
     }
-    public CraFuncionario(int craIdFuncionario, String craNome, String craCpf, String craCargo, String craCelular, BigDecimal craSalario, Date craDataAdmissao, Set craVendases) {
+    public CraFuncionario(int craIdFuncionario, String craNome, String craCpf, String craCargo, String craCelular, Double craSalario, Date craDataAdmissao, Set craVendases) {
        this.craIdFuncionario = craIdFuncionario;
        this.craNome = craNome;
        this.craCpf = craCpf;
@@ -54,7 +51,7 @@ public class CraFuncionario  implements java.io.Serializable {
        this.craCelular = craCelular;
        this.craSalario = craSalario;
        this.craDataAdmissao = craDataAdmissao;
-       this.craVendases = craVendases;
+
     }
    
      @Id 
@@ -111,11 +108,11 @@ public class CraFuncionario  implements java.io.Serializable {
 
     
     @Column(name="cra_salario", nullable=false, precision=10)
-    public BigDecimal getCraSalario() {
+    public Double getCraSalario() {
         return this.craSalario;
     }
     
-    public void setCraSalario(BigDecimal craSalario) {
+    public void setCraSalario(Double craSalario) {
         this.craSalario = craSalario;
     }
 
@@ -128,17 +125,6 @@ public class CraFuncionario  implements java.io.Serializable {
     public void setCraDataAdmissao(Date craDataAdmissao) {
         this.craDataAdmissao = craDataAdmissao;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="craFuncionario")
-    public Set getCraVendases() {
-        return this.craVendases;
-    }
-    
-    public void setCraVendases(Set craVendases) {
-        this.craVendases = craVendases;
-    }
-
-
 
 
 }

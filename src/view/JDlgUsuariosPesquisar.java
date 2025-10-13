@@ -4,31 +4,39 @@
  */
 package view;
 
+import bean.CrsUsuarios;
+import dao.UsuariosDAO;
 import java.util.List;
+import view.JDlgUsuarios;
 
 /**
  *
- * @author u05084603105
+ * @author Marcos
  */
 public class JDlgUsuariosPesquisar extends javax.swing.JDialog {
 
-JDlgUsuarios jDlgUsuarios;
     /**
      * Creates new form JDlgUsuariosPesquisar
      */
+    private JDlgUsuarios jDlgUsuarios;
+    ControllerUsuarios controllerUsuarios;
+    
     public JDlgUsuariosPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pesquisar Usuários");
         setLocationRelativeTo(null);
-       
-     
-    }
-    
-    public void setTelaPai(JDlgUsuarios jDlgUsuarios){
-    this.jDlgUsuarios = jDlgUsuarios;
+        setTitle("Pesquisar Usuários");
+        controllerUsuarios = new ControllerUsuarios();
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        List lista = (List) usuariosDAO.listAll();
+        controllerUsuarios.setList(lista);
+        jTable1.setModel(controllerUsuarios);
     }
 
+    public void setTelaAnterior( JDlgUsuarios jDlgUsuarios) {
+        this.jDlgUsuarios = jDlgUsuarios;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,8 +100,9 @@ JDlgUsuarios jDlgUsuarios;
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-       setVisible(false);
+         CrsUsuarios usuarios =  controllerUsuarios.getBean( jTable1.getSelectedRow() );
+        jDlgUsuarios.beanView(usuarios);
+        this.setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

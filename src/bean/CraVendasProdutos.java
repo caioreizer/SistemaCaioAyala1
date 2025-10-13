@@ -2,7 +2,7 @@ package bean;
 // Generated 12/10/2025 19:55:43 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,14 +25,14 @@ public class CraVendasProdutos  implements java.io.Serializable {
      private CraProduto craProduto;
      private CraVendas craVendas;
      private int craQuantidade;
-     private BigDecimal craDesconto;
+     private Double craDesconto;
      private String craObservacao;
-     private BigDecimal craPrecoFinal;
+     private Double craPrecoFinal;
 
     public CraVendasProdutos() {
     }
 
-    public CraVendasProdutos(int craIdVendasProdutos, CraProduto craProduto, CraVendas craVendas, int craQuantidade, BigDecimal craDesconto, String craObservacao, BigDecimal craPrecoFinal) {
+    public CraVendasProdutos(int craIdVendasProdutos, CraProduto craProduto, CraVendas craVendas, int craQuantidade, Double craDesconto, String craObservacao, Double craPrecoFinal) {
        this.craIdVendasProdutos = craIdVendasProdutos;
        this.craProduto = craProduto;
        this.craVendas = craVendas;
@@ -86,11 +86,11 @@ public class CraVendasProdutos  implements java.io.Serializable {
 
     
     @Column(name="cra_desconto", nullable=false, precision=5)
-    public BigDecimal getCraDesconto() {
+    public Double getCraDesconto() {
         return this.craDesconto;
     }
     
-    public void setCraDesconto(BigDecimal craDesconto) {
+    public void setCraDesconto(Double craDesconto) {
         this.craDesconto = craDesconto;
     }
 
@@ -106,11 +106,11 @@ public class CraVendasProdutos  implements java.io.Serializable {
 
     
     @Column(name="cra_precoFinal", nullable=false, precision=10)
-    public BigDecimal getCraPrecoFinal() {
+    public Double getCraPrecoFinal() {
         return this.craPrecoFinal;
     }
     
-    public void setCraPrecoFinal(BigDecimal craPrecoFinal) {
+    public void setCraPrecoFinal(Double craPrecoFinal) {
         this.craPrecoFinal = craPrecoFinal;
     }
 

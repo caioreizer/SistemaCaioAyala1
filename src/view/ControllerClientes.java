@@ -38,15 +38,15 @@ public class ControllerClientes extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        CraClientes funcionario = (CraClientes) lstClientes.get( rowIndex);
+        CraClientes clientes = (CraClientes) lstClientes.get( rowIndex);
         if ( columnIndex == 0 ){
-            return funcionario.getCraIdCliente();
+            return clientes.getCraIdCliente();
         } else if (columnIndex ==1) {
-            return funcionario.getCraNome();        
+            return clientes.getCraNome();        
         } else if (columnIndex ==2) {
-            return funcionario.getCraCpf();
+            return clientes.getCraCpf();
         } else if (columnIndex ==3) {
-            return funcionario.getCraCep();
+            return clientes.getCraCep();
         }
         return "";
     }

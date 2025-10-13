@@ -2,14 +2,10 @@ package bean;
 // Generated 12/10/2025 19:55:43 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,17 +21,17 @@ public class CraProduto  implements java.io.Serializable {
      private int craIdProduto;
      private String craNome;
      private String craDescricao;
-     private BigDecimal craPreco;
+     private Double craPreco;
      private String craTamanho;
      private String craSabor;
-     private char craDisponivel;
-     private Set craVendasProdutoses = new HashSet(0);
+     private String craDisponivel;
+
 
     public CraProduto() {
     }
 
 	
-    public CraProduto(int craIdProduto, String craNome, String craDescricao, BigDecimal craPreco, String craTamanho, String craSabor, char craDisponivel) {
+    public CraProduto(int craIdProduto, String craNome, String craDescricao, Double craPreco, String craTamanho, String craSabor, String craDisponivel) {
         this.craIdProduto = craIdProduto;
         this.craNome = craNome;
         this.craDescricao = craDescricao;
@@ -44,7 +40,7 @@ public class CraProduto  implements java.io.Serializable {
         this.craSabor = craSabor;
         this.craDisponivel = craDisponivel;
     }
-    public CraProduto(int craIdProduto, String craNome, String craDescricao, BigDecimal craPreco, String craTamanho, String craSabor, char craDisponivel, Set craVendasProdutoses) {
+    public CraProduto(int craIdProduto, String craNome, String craDescricao, Double craPreco, String craTamanho, String craSabor, String craDisponivel, Set craVendasProdutoses) {
        this.craIdProduto = craIdProduto;
        this.craNome = craNome;
        this.craDescricao = craDescricao;
@@ -52,7 +48,7 @@ public class CraProduto  implements java.io.Serializable {
        this.craTamanho = craTamanho;
        this.craSabor = craSabor;
        this.craDisponivel = craDisponivel;
-       this.craVendasProdutoses = craVendasProdutoses;
+
     }
    
      @Id 
@@ -89,11 +85,11 @@ public class CraProduto  implements java.io.Serializable {
 
     
     @Column(name="cra_preco", nullable=false, precision=10)
-    public BigDecimal getCraPreco() {
+    public Double getCraPreco() {
         return this.craPreco;
     }
     
-    public void setCraPreco(BigDecimal craPreco) {
+    public void setCraPreco(Double craPreco) {
         this.craPreco = craPreco;
     }
 
@@ -119,22 +115,14 @@ public class CraProduto  implements java.io.Serializable {
 
     
     @Column(name="cra_disponivel", nullable=false, length=1)
-    public char getCraDisponivel() {
+    public String getCraDisponivel() {
         return this.craDisponivel;
     }
     
-    public void setCraDisponivel(char craDisponivel) {
+    public void setCraDisponivel(String craDisponivel) {
         this.craDisponivel = craDisponivel;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="craProduto")
-    public Set getCraVendasProdutoses() {
-        return this.craVendasProdutoses;
-    }
-    
-    public void setCraVendasProdutoses(Set craVendasProdutoses) {
-        this.craVendasProdutoses = craVendasProdutoses;
-    }
 
 
 

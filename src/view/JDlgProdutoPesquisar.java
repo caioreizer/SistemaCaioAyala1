@@ -4,30 +4,39 @@
  */
 package view;
 
+import bean.CraProduto;
+import dao.ProdutoDAO;
 import java.util.List;
+import view.JDlgProduto;
 
 /**
  *
- * @author u05084603105
+ * @author Marcos
  */
 public class JDlgProdutoPesquisar extends javax.swing.JDialog {
 
-JDlgProduto jDlgProduto;
     /**
      * Creates new form JDlgUsuariosPesquisar
      */
+    private JDlgProduto jDlgProduto;
+    ControllerProduto controllerProduto;
+    
     public JDlgProdutoPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pesquisar Produtos");
         setLocationRelativeTo(null);
-    
-    }
-    
-    public void setTelaPai(JDlgProduto jDlgProduto){
-    this.jDlgProduto = jDlgProduto;
+        setTitle("Pesquisar Produtos");
+        controllerProduto = new ControllerProduto();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        List lista = (List) produtoDAO.listAll();
+        controllerProduto.setList(lista);
+        jTable1.setModel(controllerProduto);
     }
 
+    public void setTelaAnterior( JDlgProduto jDlgProduto) {
+        this.jDlgProduto = jDlgProduto;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,8 +98,9 @@ JDlgProduto jDlgProduto;
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-        setVisible(false);
+       CraProduto produto =  controllerProduto.getBean( jTable1.getSelectedRow() );
+        jDlgProduto.beanView(produto);
+        this.setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

@@ -2,9 +2,8 @@ package bean;
 // Generated 12/10/2025 19:55:43 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
+
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,9 +31,9 @@ public class CraVendas  implements java.io.Serializable {
      private CraFuncionario craFuncionario;
      private Date craDataVenda;
      private String craFormaPagamento;
-     private BigDecimal craValorUnitario;
+     private Double craValorUnitario;
      private String craStatus;
-     private Set craVendasProdutoses = new HashSet(0);
+
 
     public CraVendas() {
     }
@@ -43,7 +42,7 @@ public class CraVendas  implements java.io.Serializable {
     public CraVendas(int craIdVendas) {
         this.craIdVendas = craIdVendas;
     }
-    public CraVendas(int craIdVendas, CraClientes craClientes, CraFuncionario craFuncionario, Date craDataVenda, String craFormaPagamento, BigDecimal craValorUnitario, String craStatus, Set craVendasProdutoses) {
+    public CraVendas(int craIdVendas, CraClientes craClientes, CraFuncionario craFuncionario, Date craDataVenda, String craFormaPagamento, Double craValorUnitario, String craStatus, Set craVendasProdutoses) {
        this.craIdVendas = craIdVendas;
        this.craClientes = craClientes;
        this.craFuncionario = craFuncionario;
@@ -51,7 +50,7 @@ public class CraVendas  implements java.io.Serializable {
        this.craFormaPagamento = craFormaPagamento;
        this.craValorUnitario = craValorUnitario;
        this.craStatus = craStatus;
-       this.craVendasProdutoses = craVendasProdutoses;
+
     }
    
      @Id 
@@ -108,11 +107,11 @@ public class CraVendas  implements java.io.Serializable {
 
     
     @Column(name="cra_valorUnitario", precision=10)
-    public BigDecimal getCraValorUnitario() {
+    public Double getCraValorUnitario() {
         return this.craValorUnitario;
     }
     
-    public void setCraValorUnitario(BigDecimal craValorUnitario) {
+    public void setCraValorUnitario(Double craValorUnitario) {
         this.craValorUnitario = craValorUnitario;
     }
 
@@ -125,17 +124,6 @@ public class CraVendas  implements java.io.Serializable {
     public void setCraStatus(String craStatus) {
         this.craStatus = craStatus;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="craVendas")
-    public Set getCraVendasProdutoses() {
-        return this.craVendasProdutoses;
-    }
-    
-    public void setCraVendasProdutoses(Set craVendasProdutoses) {
-        this.craVendasProdutoses = craVendasProdutoses;
-    }
-
-
 
 
 }

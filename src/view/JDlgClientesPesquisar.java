@@ -4,34 +4,39 @@
  */
 package view;
 
-
+import bean.CraClientes;
+import dao.ClientesDAO;
 import java.util.List;
+import view.JDlgClientes;
 
 /**
  *
- * @author u05084603105
+ * @author Marcos
  */
 public class JDlgClientesPesquisar extends javax.swing.JDialog {
 
-
-JDlgClientes jDlgClientes;
     /**
      * Creates new form JDlgUsuariosPesquisar
      */
+    private JDlgClientes jDlgClientes;
+    ControllerClientes controllerClientes;
+    
     public JDlgClientesPesquisar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setTitle("Pesquisar Clientes");
         setLocationRelativeTo(null);
-       
-       
-        
-    }
-    
-    public void setTelaPai(JDlgClientes jDlgClientes){
-    this.jDlgClientes = jDlgClientes;
+        setTitle("Pesquisar Clientes");
+        controllerClientes= new ControllerClientes();
+        ClientesDAO clientesDAO = new ClientesDAO();
+        List lista = (List) clientesDAO.listAll();
+        controllerClientes.setList(lista);
+        jTable1.setModel(controllerClientes);
     }
 
+    public void setTelaAnterior( JDlgClientes jDlgClientes) {
+        this.jDlgClientes = jDlgClientes;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,8 +98,10 @@ JDlgClientes jDlgClientes;
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-        int linSel = jTable1.getSelectedRow();
-        setVisible(false);
+         // TODO add your handling code here:
+       CraClientes clientes =  controllerClientes.getBean( jTable1.getSelectedRow() );
+        jDlgClientes.beanView(clientes);
+        this.setVisible(false);
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     /**

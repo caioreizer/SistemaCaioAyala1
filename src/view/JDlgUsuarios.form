@@ -126,15 +126,17 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jBtnPesquisar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="3" max="-2" attributes="0">
-                              <Component id="jBtnIncluir" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jBtnConfirmar" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="jBtnCancelar" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="jBtnExcluir" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="jBtnAlterar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jBtnIncluir" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="jBtnAlterar" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <Component id="jBtnPesquisar" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

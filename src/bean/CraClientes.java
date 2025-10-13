@@ -2,7 +2,7 @@ package bean;
 // Generated 12/10/2025 19:55:43 by Hibernate Tools 4.3.1
 
 
-import java.util.HashSet;
+
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +36,8 @@ public class CraClientes  implements java.io.Serializable {
      private String craCidade;
      private String craEstado;
      private int craStatus;
-     private Set craVendases = new HashSet(0);
+
+
 
     public CraClientes() {
     }
@@ -71,7 +72,7 @@ public class CraClientes  implements java.io.Serializable {
        this.craCidade = craCidade;
        this.craEstado = craEstado;
        this.craStatus = craStatus;
-       this.craVendases = craVendases;
+
     }
    
      @Id 
@@ -225,17 +226,6 @@ public class CraClientes  implements java.io.Serializable {
     public void setCraStatus(int craStatus) {
         this.craStatus = craStatus;
     }
-
-@OneToMany(fetch=FetchType.LAZY, mappedBy="craClientes")
-    public Set getCraVendases() {
-        return this.craVendases;
-    }
-    
-    public void setCraVendases(Set craVendases) {
-        this.craVendases = craVendases;
-    }
-
-
 
 
 }

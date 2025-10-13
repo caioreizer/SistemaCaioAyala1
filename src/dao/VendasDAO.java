@@ -5,7 +5,8 @@
  */
 package dao;
 
-import bean.CrsUsuarios;
+
+import bean.CraVendas;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -46,8 +47,8 @@ public class VendasDAO extends AbstractDAO{
     @Override
     public Object list(int codigo) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(CrsUsuarios.class);
-        criteria.add(Restrictions.eq("idusuarios", codigo));
+        Criteria criteria = session.createCriteria(CraVendas.class);
+        criteria.add(Restrictions.eq("idvendas", codigo));
         List lista = criteria.list();
         session.getTransaction().commit();        
         return lista;
@@ -56,7 +57,7 @@ public class VendasDAO extends AbstractDAO{
     @Override
     public Object listAll() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(CrsUsuarios.class);
+        Criteria criteria = session.createCriteria(CraVendas.class);
         List lista = criteria.list();
         session.getTransaction().commit();        
         return lista;    

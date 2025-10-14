@@ -33,6 +33,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnuCadastros = new javax.swing.JMenu();
         jMnuUsuarios = new javax.swing.JMenuItem();
@@ -43,14 +44,18 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jMnuSair = new javax.swing.JMenuItem();
         jMnuMovimentos = new javax.swing.JMenu();
         jMnuVendas = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produtos20210825153152pic.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
 
         jMnuCadastros.setMnemonic('c');
         jMnuCadastros.setText("Cadastros");
 
         jMnuUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_MASK));
-        jMnuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuário-24 - Copia.png"))); // NOI18N
+        jMnuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/admin_user_man_22187.png"))); // NOI18N
         jMnuUsuarios.setMnemonic('u');
         jMnuUsuarios.setText("Usuários");
         jMnuUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +66,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jMnuCadastros.add(jMnuUsuarios);
 
         jMnuFuncionarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
-        jMnuFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-usuário-24 - Copia.png"))); // NOI18N
+        jMnuFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pizza_pizzadeliverypersonpeopleman_pizza_repartidordepizzas_person_1645.png"))); // NOI18N
         jMnuFuncionarios.setMnemonic('f');
         jMnuFuncionarios.setText("Funcionários");
         jMnuFuncionarios.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +77,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jMnuCadastros.add(jMnuFuncionarios);
 
         jMnuClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        jMnuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-clientes-24 - Copia.png"))); // NOI18N
+        jMnuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/admin_person_user_man_2839.png"))); // NOI18N
         jMnuClientes.setMnemonic('c');
         jMnuClientes.setText("Clientes");
         jMnuClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +113,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jMnuMovimentos.setText("Movimentos");
 
         jMnuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
-        jMnuVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-produto-24 - Copia.png"))); // NOI18N
+        jMnuVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pizza_food_fast_food_italian_food_icon_207990.png"))); // NOI18N
         jMnuVendas.setMnemonic('v');
         jMnuVendas.setText("Vendas");
         jMnuVendas.addActionListener(new java.awt.event.ActionListener() {
@@ -118,6 +123,16 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         });
         jMnuMovimentos.add(jMnuVendas);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, 0));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/food-pizza-folder_99390.png"))); // NOI18N
+        jMenuItem1.setText("Vendas Produtos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMnuMovimentos.add(jMenuItem1);
+
         jMenuBar1.add(jMnuMovimentos);
 
         setJMenuBar(jMenuBar1);
@@ -126,11 +141,11 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1066, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1750, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, Short.MAX_VALUE)
         );
 
         pack();
@@ -170,6 +185,10 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jDlgFuncionarios.setVisible(true);
     }//GEN-LAST:event_jMnuFuncionariosActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,7 +226,9 @@ public class JfrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jMnuCadastros;
     private javax.swing.JMenuItem jMnuClientes;
     private javax.swing.JMenuItem jMnuFuncionarios;

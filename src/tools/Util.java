@@ -4,10 +4,13 @@
  */
 package tools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
 
 /**
  *
@@ -20,7 +23,8 @@ public class Util {
             componentes[i].setEnabled(valor);
         }
     }
-
+    private static final String DATE_FORMAT = "dd/MM/yyyy"; 
+    
     public static void limpar(JComponent... componentes) {
         for (int i = 0; i < componentes.length; i++) {
             if (componentes[i] instanceof JTextField) {
@@ -47,17 +51,23 @@ public class Util {
     }    
     
     public static double strToDouble(String num) {
-        return 0;
+        return Double.parseDouble(num);
     }
+
     public static String doubleToStr(double num) {
-        return "";
+        return String.valueOf(num);
     }
-        
-    public static Date strToDate(String data) {
-        return null;
+
+    public static Date strToDate(String data) throws ParseException { 
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        return formatter.parse(data);
     }
+
     public static String dateToStr(Date data) {
-        return "";
+        if (data == null) {
+            return "";
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        return formatter.format(data);
     }
-    
-    }
+}

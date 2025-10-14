@@ -9,6 +9,9 @@ import bean.CraFuncionario;
 import bean.CrsUsuarios;
 import dao.FuncionariosDAO;
 import dao.UsuariosDAO;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.Util;
 
 /**
@@ -51,7 +54,11 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         funcionario.setCraCargo(jTxtCargo.getText());
         funcionario.setCraCelular(jTxtCelular.getText());
         funcionario.setCraCpf(jTxtCpf.getText());
-        funcionario.setCraDataAdmissao(Util.strToDate(jTxtDataAdmissao.getText()));
+        try {
+            funcionario.setCraDataAdmissao(Util.strToDate(jTxtDataAdmissao.getText()));
+        } catch (ParseException ex) {
+            Logger.getLogger(JDlgFuncionarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
         funcionario.setCraSalario(Util.strToDouble(jTxtSalarios.getText()));
         return funcionario;
     }

@@ -44,7 +44,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jMnuSair = new javax.swing.JMenuItem();
         jMnuMovimentos = new javax.swing.JMenu();
         jMnuVendas = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMnuVendasProdutos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,15 +123,15 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         });
         jMnuMovimentos.add(jMnuVendas);
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, 0));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/food-pizza-folder_99390.png"))); // NOI18N
-        jMenuItem1.setText("Vendas Produtos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMnuVendasProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, 0));
+        jMnuVendasProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/food-pizza-folder_99390.png"))); // NOI18N
+        jMnuVendasProdutos.setText("Vendas Produtos");
+        jMnuVendasProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMnuVendasProdutosActionPerformed(evt);
             }
         });
-        jMnuMovimentos.add(jMenuItem1);
+        jMnuMovimentos.add(jMnuVendasProdutos);
 
         jMenuBar1.add(jMnuMovimentos);
 
@@ -176,7 +176,8 @@ public class JfrmPrincipal extends javax.swing.JFrame {
 
     private void jMnuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendasActionPerformed
         // TODO add your handling code here:
-         
+         JDlgVendas jDlgVendas = new JDlgVendas(this, true);
+            jDlgVendas.setVisible(true);
     }//GEN-LAST:event_jMnuVendasActionPerformed
 
     private void jMnuFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuFuncionariosActionPerformed
@@ -185,9 +186,11 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jDlgFuncionarios.setVisible(true);
     }//GEN-LAST:event_jMnuFuncionariosActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMnuVendasProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendasProdutosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(this, true);
+            jDlgVendasProdutos.setVisible(true);
+    }//GEN-LAST:event_jMnuVendasProdutosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,7 +231,6 @@ public class JfrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jMnuCadastros;
     private javax.swing.JMenuItem jMnuClientes;
     private javax.swing.JMenuItem jMnuFuncionarios;
@@ -237,6 +239,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnuSair;
     private javax.swing.JMenuItem jMnuUsuarios;
     private javax.swing.JMenuItem jMnuVendas;
+    private javax.swing.JMenuItem jMnuVendasProdutos;
     private javax.swing.JPopupMenu.Separator jSeparator;
     // End of variables declaration//GEN-END:variables
 }

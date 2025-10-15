@@ -50,12 +50,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTxtNome" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTxtNome" alignment="0" pref="283" max="32767" attributes="0"/>
                               <Component id="jTxtCodigo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTxtCpf" alignment="1" pref="283" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtCargo" min="-2" pref="283" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -67,6 +65,10 @@
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jFmtCpf" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTxtCargo" alignment="0" pref="283" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -80,8 +82,8 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jTxtDataAdmissao" alignment="0" pref="270" max="32767" attributes="0"/>
-                                  <Component id="jTxtCelular" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jFmtDataAdmissao" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jTxtCelular" alignment="0" pref="270" max="32767" attributes="0"/>
                                   <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTxtSalarios" alignment="0" max="32767" attributes="0"/>
@@ -143,9 +145,9 @@
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTxtCpf" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTxtDataAdmissao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jFmtDataAdmissao" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFmtCpf" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -180,17 +182,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtNomeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jTxtCpf">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtCpfActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JFormattedTextField" name="jTxtCelular">
-    </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jTxtDataAdmissao">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTxtDataAdmissaoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jTxtSalarios">
     </Component>
@@ -302,6 +294,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnConfirmarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtDataAdmissao">
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFmtCpf">
     </Component>
   </SubComponents>
 </Form>

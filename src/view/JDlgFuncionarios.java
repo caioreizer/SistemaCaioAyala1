@@ -9,10 +9,13 @@ import bean.CraFuncionario;
 import bean.CrsUsuarios;
 import dao.FuncionariosDAO;
 import dao.UsuariosDAO;
+import java.awt.Color;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -22,27 +25,55 @@ import tools.Util;
 public class JDlgFuncionarios extends javax.swing.JDialog {
 
     private boolean incluir;
-
+    private MaskFormatter mascaraCpf, mascaraDataNasc;  
     public JDlgFuncionarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Cadastro de Funcionário");
         setLocationRelativeTo(null);
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCargo, jTxtCelular,
-                jTxtCpf, jTxtDataAdmissao, jTxtSalarios, 
+                jFmtCpf, jFmtDataAdmissao, jTxtSalarios, 
                 jBtnConfirmar, jBtnCancelar);
+    
+     try {
+            mascaraCpf = new MaskFormatter("###.###.###-##");
+            mascaraDataNasc = new MaskFormatter("##/##/####");
+            jFmtCpf.setFormatterFactory(new DefaultFormatterFactory(mascaraCpf));
+            jFmtDataAdmissao.setFormatterFactory(new DefaultFormatterFactory(mascaraDataNasc));
+        } catch (ParseException ex) {
+            Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
     public void beanView(CraFuncionario funcionario) {
         jTxtCodigo.setText(Util.intToStr(funcionario.getCraIdFuncionario()));
         jTxtNome.setText(funcionario.getCraNome());
-        jTxtCpf.setText(funcionario.getCraCpf());
+        jFmtCpf.setText(funcionario.getCraCpf());
         jTxtCargo.setText(funcionario.getCraCargo());
         jTxtCelular.setText(funcionario.getCraCelular());
-        jTxtDataAdmissao.setText(Util.dateToStr(funcionario.getCraDataAdmissao()));
+        jFmtDataAdmissao.setText(Util.dateToStr(funcionario.getCraDataAdmissao()));
         jTxtSalarios.setText(Util.doubleToStr(funcionario.getCraSalario()));
    
         
+    }
+       private void marcarCamposObrigatorios() {
+        Color corObrigatoria = new Color(255, 255, 220);
+     
+        jTxtNome.setBackground(corObrigatoria);
+        jTxtCodigo.setBackground(corObrigatoria);
+        jTxtCargo.setBackground(corObrigatoria);
+        jFmtCpf.setBackground(corObrigatoria);
+
+
+    }
+
+    private void desmarcarCampos() {
+        Color corPadrao = Color.WHITE;
+        jTxtNome.setBackground(corPadrao);
+        jTxtCodigo.setBackground(corPadrao);
+        jTxtCargo.setBackground(corPadrao);
+        jFmtCpf.setBackground(corPadrao);
+
+
     }
 
     public CraFuncionario viewBean() {
@@ -54,9 +85,9 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         funcionario.setCraNome(jTxtNome.getText());
         funcionario.setCraCargo(jTxtCargo.getText());
         funcionario.setCraCelular(jTxtCelular.getText());
-        funcionario.setCraCpf(jTxtCpf.getText());
+        funcionario.setCraCpf(jFmtCpf.getText());
         try {
-            funcionario.setCraDataAdmissao(Util.strToDate(jTxtDataAdmissao.getText()));
+            funcionario.setCraDataAdmissao(Util.strToDate(jFmtDataAdmissao.getText()));
         } catch (ParseException ex) {
             Logger.getLogger(JDlgFuncionarios.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -70,9 +101,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jTxtCargo = new javax.swing.JFormattedTextField();
         jTxtCodigo = new javax.swing.JTextField();
         jTxtNome = new javax.swing.JTextField();
-        jTxtCpf = new javax.swing.JFormattedTextField();
         jTxtCelular = new javax.swing.JFormattedTextField();
-        jTxtDataAdmissao = new javax.swing.JFormattedTextField();
         jTxtSalarios = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -91,6 +120,8 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jBtnExcluir = new javax.swing.JButton();
         jBtnIncluir = new javax.swing.JButton();
         jBtnConfirmar = new javax.swing.JButton();
+        jFmtDataAdmissao = new javax.swing.JFormattedTextField();
+        jFmtCpf = new javax.swing.JFormattedTextField();
 
         jLabel9.setText("Código");
 
@@ -105,18 +136,6 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         jTxtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtNomeActionPerformed(evt);
-            }
-        });
-
-        jTxtCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtCpfActionPerformed(evt);
-            }
-        });
-
-        jTxtDataAdmissao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtDataAdmissaoActionPerformed(evt);
             }
         });
 
@@ -205,11 +224,9 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTxtNome)
-                                .addComponent(jTxtCodigo)
-                                .addComponent(jTxtCpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                                .addComponent(jTxtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                .addComponent(jTxtCodigo))
                             .addComponent(jLabel5)
-                            .addComponent(jTxtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel8)
                             .addComponent(jLabel1)
@@ -219,7 +236,10 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)))
+                                .addComponent(jLabel3))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jFmtCpf, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTxtCargo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)))
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -229,8 +249,8 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTxtDataAdmissao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                                    .addComponent(jTxtCelular, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jFmtDataAdmissao, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTxtCelular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTxtSalarios, javax.swing.GroupLayout.Alignment.LEADING))
@@ -275,9 +295,9 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
                             .addComponent(jLabel5)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTxtDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jFmtDataAdmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -304,20 +324,12 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtNomeActionPerformed
 
-    private void jTxtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtCpfActionPerformed
-
-    private void jTxtDataAdmissaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtDataAdmissaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtDataAdmissaoActionPerformed
-
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false,  jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false,  jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao,jBtnConfirmar, jBtnCancelar);
 
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
+        Util.limpar(jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
@@ -327,23 +339,25 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         }
         
 // TODO add your handling code here:
-     Util.habilitar(true,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar,
+     Util.habilitar(true,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao,jBtnConfirmar, jBtnCancelar,
                 jBtnConfirmar, jBtnCancelar);
                 
        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
                incluir = false;
                
          jTxtNome.grabFocus();
+         marcarCamposObrigatorios();
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-         Util.habilitar(true, jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar,
+         Util.habilitar(true, jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao,jBtnConfirmar, jBtnCancelar,
                 jBtnConfirmar, jBtnCancelar);
                 
        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-       Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
+       Util.limpar(jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao);
            // TODO add your handling code here:
          incluir = true;
+         marcarCamposObrigatorios();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
@@ -360,10 +374,11 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         }
         
 
-    Util.habilitar(false,  jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar);
+    Util.habilitar(false,  jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao,jBtnConfirmar, jBtnCancelar);
 
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
+        Util.limpar(jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao);
+         desmarcarCampos();
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -376,8 +391,8 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
            FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
             funcionariosDAO.delete(viewBean());
         }
-        Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
-         
+        Util.limpar(jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao);
+          desmarcarCampos();
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -436,6 +451,8 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnIncluir;
     private javax.swing.JButton jBtnPesquisar;
+    private javax.swing.JFormattedTextField jFmtCpf;
+    private javax.swing.JFormattedTextField jFmtDataAdmissao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -451,8 +468,6 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField jTxtCargo;
     private javax.swing.JFormattedTextField jTxtCelular;
     private javax.swing.JTextField jTxtCodigo;
-    private javax.swing.JFormattedTextField jTxtCpf;
-    private javax.swing.JFormattedTextField jTxtDataAdmissao;
     private javax.swing.JTextField jTxtNome;
     private javax.swing.JFormattedTextField jTxtSalarios;
     // End of variables declaration//GEN-END:variables

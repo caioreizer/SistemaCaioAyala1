@@ -2,42 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerVendas.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgUsuariosPesquisar.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgClientes.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/ProdutoDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerProduto.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/VendasDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgFuncionarios.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JfrmPrincipal.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/hibernate.reveng.xml</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/UsuariosDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/ClientesDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgClientesPesquisar.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraVendasProdutos.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CrsUsuarios.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgUsuarios.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraClientes.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerVendasProduto.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/HibernateUtil.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/img/Excluir.png</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/FuncionariosDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgProdutoPesquisar.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraFuncionario.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerClientes.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraVendas.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgVendas.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/AbstractDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerUsuarios.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/tools/Util.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgProduto.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgVendasProdutos.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgFuncionariosPesquisar.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/VendasProdutoDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraProduto.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerFuncionarios.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

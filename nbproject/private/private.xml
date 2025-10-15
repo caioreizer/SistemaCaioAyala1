@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerVendas.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgUsuariosPesquisar.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgVendasPesquisar.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgClientes.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/ProdutoDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerProduto.java</file>
@@ -28,10 +29,12 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraFuncionario.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerClientes.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraVendas.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgVendas.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/AbstractDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/ControllerUsuarios.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/tools/Util.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgProduto.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgVendasProdutos.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/view/JDlgFuncionariosPesquisar.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/dao/VendasProdutoDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/SistemaCaioAyala1/src/bean/CraProduto.java</file>

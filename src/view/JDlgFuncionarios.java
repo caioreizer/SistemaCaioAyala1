@@ -12,6 +12,7 @@ import dao.UsuariosDAO;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import tools.Util;
 
 /**
@@ -313,19 +314,26 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true,  jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar);
+        Util.habilitar(false,  jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar);
 
-        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+        Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
-        // TODO add your handling code here:
+       if (jTxtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise um funcionário antes de alterar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+// TODO add your handling code here:
      Util.habilitar(true,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao,jBtnConfirmar, jBtnCancelar,
                 jBtnConfirmar, jBtnCancelar);
                 
        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
                incluir = false;
+               
+         jTxtNome.grabFocus();
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
@@ -359,11 +367,17 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
+       if (jTxtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise um funcionário antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         if (Util.perguntar("Deseja excluir ?") == true) {
            FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
             funcionariosDAO.delete(viewBean());
         }
         Util.limpar(jTxtCodigo,jTxtNome,  jTxtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jTxtDataAdmissao);
+         
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

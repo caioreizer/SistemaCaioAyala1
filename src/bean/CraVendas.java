@@ -128,8 +128,7 @@ public class CraVendas  implements java.io.Serializable {
     public void getCraDataVenda(Date strToDate) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+   
 
 }
-
 

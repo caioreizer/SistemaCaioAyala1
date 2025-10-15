@@ -9,6 +9,8 @@ import bean.CraProduto;
 import bean.CrsUsuarios;
 import dao.ProdutoDAO;
 import dao.UsuariosDAO;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 import tools.Util;
 
 /**
@@ -38,8 +40,25 @@ public class JDlgProduto extends javax.swing.JDialog {
         jTxtTamanho.setText(produto.getCraTamanho());
         jTxtDisponivel.setText(produto.getCraDisponivel());
         //jChbAtivo.setSelected( usuarios.getAtivo().equals("S"));
-   
+    }
+        private void marcarCamposObrigatorios() {
+        Color corObrigatoria = new Color(255, 255, 220);
      
+        jTxtNome.setBackground(corObrigatoria);
+        jTxtCodigo.setBackground(corObrigatoria);
+        jTxtTamanho.setBackground(corObrigatoria);
+        jTxtSabor.setBackground(corObrigatoria);
+
+
+    }
+
+    private void desmarcarCampos() {
+        Color corPadrao = Color.WHITE;
+        jTxtNome.setBackground(corPadrao);
+        jTxtCodigo.setBackground(corPadrao);
+        jTxtTamanho.setBackground(corPadrao);
+        jTxtSabor.setBackground(corPadrao);
+
 
     }
 
@@ -297,7 +316,7 @@ public class JDlgProduto extends javax.swing.JDialog {
 
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jTxtDescricao, jTxtTamanho, jTxtSabor, jTxtDisponivel, jTxtPreco); // TODO add your handling code here:
-         
+         desmarcarCampos();
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
@@ -308,6 +327,7 @@ public class JDlgProduto extends javax.swing.JDialog {
 
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         Util.limpar(jTxtCodigo, jTxtNome, jTxtDescricao, jTxtTamanho, jTxtSabor, jTxtDisponivel, jTxtPreco); // TODO add your handling code here:
+        desmarcarCampos();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtCodigoActionPerformed
@@ -326,15 +346,25 @@ public class JDlgProduto extends javax.swing.JDialog {
                 
        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
        incluir = true;
+       marcarCamposObrigatorios();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
+        if (jTxtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise um produto antes de alterar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         Util.habilitar(true, jTxtNome, jTxtDescricao,
                 jTxtTamanho, jTxtSabor, jTxtDisponivel, jTxtPreco,
                 jBtnConfirmar, jBtnCancelar);
                 
        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
          incluir = false;
+         marcarCamposObrigatorios();
+          
+          jTxtNome.grabFocus();
+          
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jTxtTamanhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTamanhoActionPerformed
@@ -342,10 +372,16 @@ public class JDlgProduto extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtTamanhoActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-      if (Util.perguntar("Deseja excluir ?") == true) {
+        if (jTxtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise um produto antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (Util.perguntar("Deseja excluir ?") == true) {
             UsuariosDAO usuariosDAO = new UsuariosDAO();
             usuariosDAO.delete(viewBean());
         } 
+     
       Util.limpar(jTxtCodigo, jTxtNome, jTxtDescricao, jTxtTamanho, jTxtSabor, jTxtDisponivel, jTxtPreco);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 

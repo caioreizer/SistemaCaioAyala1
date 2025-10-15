@@ -20,7 +20,23 @@ import javax.persistence.TemporalType;
     ,catalog="db_caio_ayala"
 )
 public class CraFuncionario  implements java.io.Serializable {
+    private int idfuncionario;
+    private String descricao;
+    private String ativo;
 
+    @Override
+    public String toString() {
+        return this.getCraNome();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof CraFuncionario) {
+            CraFuncionario funcionario = (CraFuncionario) obj;
+            return this.getCraIdFuncionario() == funcionario.getCraIdFuncionario();
+        }
+        return false;
+    }
 
      private int craIdFuncionario;
      private String craNome;
@@ -32,6 +48,9 @@ public class CraFuncionario  implements java.io.Serializable {
 
 
     public CraFuncionario() {
+    }
+     public CraFuncionario(int craIdFuncionario) {
+        this.craIdFuncionario = craIdFuncionario;
     }
 
 	

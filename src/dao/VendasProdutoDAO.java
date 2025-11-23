@@ -5,24 +5,23 @@
  */
 package dao;
 
+import bean.CraVendas;
 import bean.CraVendasProdutos;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
-
-
 /**
  *
  * @author u1845853
  */
-public class VendasProdutoDAO extends AbstractDAO{
+public class VendasProdutoDAO extends AbstractDAO {
 
     @Override
     public void insert(Object object) {
         session.beginTransaction();
         session.save(object);
-        session.getTransaction().commit();        
+        session.getTransaction().commit();
     }
 
     @Override
@@ -31,16 +30,16 @@ public class VendasProdutoDAO extends AbstractDAO{
         session.flush();
         session.clear();
         session.update(object);
-        session.getTransaction().commit();        
+        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Object object) {
         session.beginTransaction();
         session.flush();
-        session.clear();        
+        session.clear();
         session.delete(object);
-        session.getTransaction().commit();        
+        session.getTransaction().commit();
     }
 
     @Override
@@ -49,7 +48,16 @@ public class VendasProdutoDAO extends AbstractDAO{
         Criteria criteria = session.createCriteria(CraVendasProdutos.class);
         criteria.add(Restrictions.eq("idvendasprodutos", codigo));
         List lista = criteria.list();
-        session.getTransaction().commit();        
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listProdutos(CraVendas vendas) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CraVendasProdutos.class);
+        criteria.add(Restrictions.eq("craVendas", vendas));
+        List lista = criteria.list();
+        session.getTransaction().commit();
         return lista;
     }
 
@@ -58,8 +66,8 @@ public class VendasProdutoDAO extends AbstractDAO{
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CraVendasProdutos.class);
         List lista = criteria.list();
-        session.getTransaction().commit();        
-        return lista;    
+        session.getTransaction().commit();
+        return lista;
     }
 
     public static void main(String[] args) {

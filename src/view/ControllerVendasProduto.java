@@ -15,42 +15,53 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ControllerVendasProduto extends AbstractTableModel {
 
-    private List lstVendasProduto;
+    private List lstVendasProdutos;
 
-    public void setList(List lstUsuarios) {
-        this.lstVendasProduto = lstVendasProduto;
+    public void setList(List lstVendasProdutos) {
+        this.lstVendasProdutos = lstVendasProdutos;
+        
+        this.fireTableDataChanged();
     }
     
     public CraVendasProdutos getBean(int rowIndex) {
-        return (CraVendasProdutos) lstVendasProduto.get(rowIndex);
+        return (CraVendasProdutos) lstVendasProdutos.get(rowIndex);
     }
 
+    public void addBean(CraVendasProdutos vendasProdutos) {
+        lstVendasProdutos.add(vendasProdutos);
+        this.fireTableDataChanged();
+    }
+    
+    public void removeBean(int rowIndex) {
+        lstVendasProdutos.remove(rowIndex);
+        this.fireTableDataChanged();
+    }
+    
     @Override
     public int getRowCount() {
-        return lstVendasProduto.size();
-                
+        return lstVendasProdutos.size();                
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        CraVendasProdutos vendasProdutos = (CraVendasProdutos) lstVendasProduto.get( rowIndex);
+        CraVendasProdutos vendasProdutos = (CraVendasProdutos) lstVendasProdutos.get( rowIndex);
         if ( columnIndex == 0 ){
-            return vendasProdutos.getCraIdVendasProdutos();
+            return vendasProdutos.getCraProduto().getCraIdProduto();
         } else if (columnIndex ==1) {
-            return vendasProdutos.getCraDesconto();        
+            return vendasProdutos.getCraProduto().getCraNome();
         } else if (columnIndex ==2) {
-            return vendasProdutos.getCraObservacao();
-        } else if (columnIndex ==3) {
             return vendasProdutos.getCraQuantidade();
-         } else if (columnIndex ==4) {
+        } else if (columnIndex ==3) {
             return vendasProdutos.getCraPrecoFinal();
+        }else if (columnIndex ==4) {
+            return vendasProdutos.getCraPrecoFinal()*vendasProdutos.getCraQuantidade();
         }
-        return "";
+        return ""; 
     }
 
     @Override
@@ -58,13 +69,13 @@ public class ControllerVendasProduto extends AbstractTableModel {
         if ( columnIndex == 0) {
             return "Código";
         } else if ( columnIndex == 1) {
-            return "Desconto";         
+            return "Produto";         
         } else if ( columnIndex == 2) {
-            return "Observação";
-        } else if ( columnIndex == 3) {
             return "Quantidade";
+        } else if ( columnIndex == 3) {
+            return "Valor Unitário";
         } else if ( columnIndex == 4) {
-            return "Preço Final";
+            return "Total";
         } 
         return "";
     }

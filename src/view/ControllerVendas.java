@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -17,8 +17,8 @@ public class ControllerVendas extends AbstractTableModel {
 
     private List lstVendas;
 
-    public void setList(List lstUsuarios) {
-        this.lstVendas = lstUsuarios;
+    public void setList(List lstVendas) {
+        this.lstVendas = lstVendas;
     }
     
     public CraVendas getBean(int rowIndex) {

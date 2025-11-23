@@ -122,7 +122,10 @@ public class CraProduto  implements java.io.Serializable {
     public void setCraDisponivel(String craDisponivel) {
         this.craDisponivel = craDisponivel;
     }
-
+    @Override 
+    public String toString(){
+        return this.craNome;
+    }
 
 
 

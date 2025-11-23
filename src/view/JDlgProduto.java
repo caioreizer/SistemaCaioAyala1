@@ -378,8 +378,8 @@ public class JDlgProduto extends javax.swing.JDialog {
         }
         
         if (Util.perguntar("Deseja excluir ?") == true) {
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
-            usuariosDAO.delete(viewBean());
+            ProdutoDAO produtosDAO = new ProdutoDAO();
+            produtosDAO.delete(viewBean());
         } 
      
       Util.limpar(jTxtCodigo, jTxtNome, jTxtDescricao, jTxtTamanho, jTxtSabor, jTxtDisponivel, jTxtPreco);

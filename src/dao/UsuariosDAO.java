@@ -52,6 +52,18 @@ public class UsuariosDAO extends AbstractDAO{
         session.getTransaction().commit();        
         return lista;
     }
+    
+     public CrsUsuarios autenticar(String apelido, String senha) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CrsUsuarios.class);
+        criteria.add(Restrictions.eq("craApelido", apelido));
+        criteria.add(Restrictions.eq("craSenha", senha));
+        CrsUsuarios usuario = (CrsUsuarios) criteria.uniqueResult();
+        session.getTransaction().commit();
+        return usuario;
+    }
+
+
 
     @Override
     public Object listAll() {

@@ -7,6 +7,7 @@ package view;
 
 import bean.CraClientes;
 import dao.ClientesDAO;
+import dao.FuncionariosDAO;
 import java.awt.Color;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -126,7 +127,7 @@ public class JDlgClientes extends javax.swing.JDialog {
         jBtnIncluir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jCboStatus = new javax.swing.JComboBox<>();
+        jCboStatus = new javax.swing.JComboBox<String>();
         jBtnAlterar = new javax.swing.JButton();
         jFmtCpf = new javax.swing.JFormattedTextField();
         jBtnExcluir = new javax.swing.JButton();
@@ -221,7 +222,7 @@ public class JDlgClientes extends javax.swing.JDialog {
 
         jLabel4.setText("Data de Nascimento");
 
-        jCboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Não ativo", " " }));
+        jCboStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Não ativo", " " }));
         jCboStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboStatusActionPerformed(evt);
@@ -462,9 +463,8 @@ public class JDlgClientes extends javax.swing.JDialog {
                                                 .addGap(6, 6, 6)))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jTxtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(jTxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jFmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -634,20 +634,19 @@ public class JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtEstadoActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-        if (jTxtCodigo.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Pesquise um cliente antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+     if (jTxtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise um funcionário antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
         if (Util.perguntar("Deseja excluir ?") == true) {
            ClientesDAO clientesDAO = new ClientesDAO();
-           clientesDAO.delete(viewBean());
-           Util.limpar(jTxtCodigo,jTxtNome,  jTxtCelular, 
-           jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento, 
-           jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa,jPwdSenha,jTxtCidade, jTxtTelefone, jCboStatus);
+            clientesDAO.delete(viewBean());
         }
-      
-       
+         Util.limpar(jTxtCodigo,jTxtNome,  jTxtCelular,
+                jFmtCpf,  jFmtCep, jTxtComplemento, jFmtDataNascimento, 
+                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jPwdSenha,jTxtCidade, jTxtTelefone, jCboStatus);
+          desmarcarCampos();
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

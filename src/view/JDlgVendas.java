@@ -403,14 +403,14 @@ public class JDlgVendas extends javax.swing.JDialog {
             return;
         }
          if (Util.perguntar("Deseja excluir ?") == true) {
-            VendasDAO pedidosDAO = new VendasDAO();       
+            VendasDAO vendasDAO = new VendasDAO();       
             VendasProdutoDAO vendasProdutosDAO = new VendasProdutoDAO();
                
               for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
                 CraVendasProdutos vendasProdutos = controllerVendProd.getBean(ind);
                 vendasProdutosDAO.delete(vendasProdutos);
             }
-               pedidosDAO.delete(viewBean()); 
+               vendasDAO.delete(viewBean()); 
         }
         Util.limpar(jTxtCodigo1, jFmtData, jTxtFormaPagamento,jTxtStatus, jCboClientes, jCboFuncionario, jTxtTotal);
         controllerVendProd.setList(new ArrayList());

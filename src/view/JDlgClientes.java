@@ -25,19 +25,18 @@ public class JDlgClientes extends javax.swing.JDialog {
 
     private boolean incluir;
     private MaskFormatter mascaraCpf, mascaraDataNasc, mascaraCep;
-    
-    
+
     public JDlgClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setTitle("Cadastro de Clientes");
         setLocationRelativeTo(null);
-        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCelular, jFmtCep,jFmtDataNascimento,
-                jTxtCidade, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jTxtTelefone, 
-                jPwdSenha, jFmtCpf, jCboStatus, 
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCelular, jFmtCep, jFmtDataNascimento,
+                jTxtCidade, jTxtComplemento, jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jTxtTelefone,
+                jPwdSenha, jFmtCpf, jCboStatus,
                 jBtnConfirmar, jBtnCancelar);
-    
-    try {
+
+        try {
             mascaraCpf = new MaskFormatter("###.###.###-##");
             mascaraCep = new MaskFormatter("#####-###");
             mascaraDataNasc = new MaskFormatter("##/##/####");
@@ -48,9 +47,10 @@ public class JDlgClientes extends javax.swing.JDialog {
             Logger.getLogger(JDlgUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     private void marcarCamposObrigatorios() {
+
+    private void marcarCamposObrigatorios() {
         Color corObrigatoria = new Color(255, 255, 220);
-     
+
         jTxtNome.setBackground(corObrigatoria);
         jTxtCelular.setBackground(corObrigatoria);
         jFmtCpf.setBackground(corObrigatoria);
@@ -127,7 +127,7 @@ public class JDlgClientes extends javax.swing.JDialog {
         jBtnIncluir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jCboStatus = new javax.swing.JComboBox<String>();
+        jCboStatus = new javax.swing.JComboBox<>();
         jBtnAlterar = new javax.swing.JButton();
         jFmtCpf = new javax.swing.JFormattedTextField();
         jBtnExcluir = new javax.swing.JButton();
@@ -222,7 +222,7 @@ public class JDlgClientes extends javax.swing.JDialog {
 
         jLabel4.setText("Data de Nascimento");
 
-        jCboStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ativo", "Não ativo", " " }));
+        jCboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ativo", "Não ativo", " " }));
         jCboStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCboStatusActionPerformed(evt);
@@ -516,7 +516,7 @@ public class JDlgClientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
-         // TODO add your handling code here:
+        // TODO add your handling code here:
         ClientesDAO clientesDAO = new ClientesDAO();
         CraClientes clientes = viewBean();
         if (incluir == true) {
@@ -526,28 +526,28 @@ public class JDlgClientes extends javax.swing.JDialog {
             clientesDAO.update(clientes);
             //usuariosDAO.update( viewBean() );
         }
-        
-        Util.habilitar(false, jTxtCodigo,jTxtNome,  jTxtCelular,
-                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento, 
-                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa,jPwdSenha,jTxtCidade,jTxtTelefone,jBtnConfirmar, jBtnCancelar, jCboStatus);
-                
-        Util.habilitar(true, jBtnIncluir,  jBtnExcluir, jBtnPesquisar, jBtnAlterar);
-          Util.limpar(jTxtCodigo,jTxtNome,  jTxtCelular, 
-                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento, 
-                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa,jPwdSenha,jTxtCidade, jTxtTelefone, jCboStatus); // TODO add your handling code here:
-          desmarcarCampos();
+
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento,
+                jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jPwdSenha, jTxtCidade, jTxtTelefone, jBtnConfirmar, jBtnCancelar, jCboStatus);
+
+        Util.habilitar(true, jBtnIncluir, jBtnExcluir, jBtnPesquisar, jBtnAlterar);
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento,
+                jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jPwdSenha, jTxtCidade, jTxtTelefone, jCboStatus); // TODO add your handling code here:
+        desmarcarCampos();
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
-      Util.habilitar(false, jTxtCodigo,jTxtNome,  jTxtCelular,
-                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento, 
-                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa,jPwdSenha, jTxtTelefone, jTxtCidade,jBtnConfirmar, jBtnCancelar, jCboStatus);
-                
+        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento,
+                jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jPwdSenha, jTxtTelefone, jTxtCidade, jBtnConfirmar, jBtnCancelar, jCboStatus);
+
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-          Util.limpar(jTxtCodigo,jTxtNome,  jTxtCelular,
-                jFmtCpf,  jFmtCep, jTxtComplemento, jFmtDataNascimento, 
-                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jPwdSenha,jTxtCidade, jTxtTelefone, jCboStatus); // TODO add your handling code here:
-          desmarcarCampos();
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtCelular,
+                jFmtCpf, jFmtCep, jTxtComplemento, jFmtDataNascimento,
+                jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jPwdSenha, jTxtCidade, jTxtTelefone, jCboStatus); // TODO add your handling code here:
+        desmarcarCampos();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jTxtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtNomeActionPerformed
@@ -559,13 +559,13 @@ public class JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtCodigoActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
-    Util.habilitar(true, jTxtCodigo,jTxtNome,  jTxtCelular,
-                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento, 
-                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa,jPwdSenha,jTxtCidade, jTxtTelefone,jBtnConfirmar, jBtnCancelar, jCboStatus);
-                
+        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento,
+                jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jPwdSenha, jTxtCidade, jTxtTelefone, jBtnConfirmar, jBtnCancelar, jCboStatus);
+
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-         incluir = true;
-         marcarCamposObrigatorios();
+        incluir = true;
+        marcarCamposObrigatorios();
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jCboStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboStatusActionPerformed
@@ -577,16 +577,16 @@ public class JDlgClientes extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Pesquise um cliente antes de alterar.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        Util.habilitar(true, jTxtNome,  jTxtCelular,
-                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento, 
-                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa,jPwdSenha,jTxtCidade, jTxtTelefone,jBtnConfirmar, jBtnCancelar, jCboStatus);
-                
+
+        Util.habilitar(true, jTxtNome, jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento,
+                jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jPwdSenha, jTxtCidade, jTxtTelefone, jBtnConfirmar, jBtnCancelar, jCboStatus);
+
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluir = false;
         marcarCamposObrigatorios();
-         
-         jTxtNome.grabFocus();
+
+        jTxtNome.grabFocus();
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jFmtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFmtCpfActionPerformed
@@ -634,19 +634,18 @@ public class JDlgClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jTxtEstadoActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-     if (jTxtCodigo.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Pesquise um funcionário antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        if (jTxtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise um clientes antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
         if (Util.perguntar("Deseja excluir ?") == true) {
-           ClientesDAO clientesDAO = new ClientesDAO();
+            ClientesDAO clientesDAO = new ClientesDAO();
             clientesDAO.delete(viewBean());
         }
-         Util.limpar(jTxtCodigo,jTxtNome,  jTxtCelular,
-                jFmtCpf,  jFmtCep, jTxtComplemento, jFmtDataNascimento, 
-                jTxtEmail,jTxtEndereco, jTxtEstado,jTxtNumeroCasa, jPwdSenha,jTxtCidade, jTxtTelefone, jCboStatus);
-          desmarcarCampos();
+
+        Util.limpar(jTxtCodigo, jTxtNome, jTxtCelular,
+                jFmtCpf, jFmtDataNascimento, jFmtCep, jTxtComplemento,
+                jTxtEmail, jTxtEndereco, jTxtEstado, jTxtNumeroCasa, jPwdSenha, jTxtCidade, jTxtTelefone, jCboStatus);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

@@ -367,7 +367,7 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
         CraFuncionario funcionarios = viewBean();
         if (incluir == true) {
             funcionariosDAO.insert(funcionarios);
-            //usuariosDAO.insert( viewBean() );
+           
         } else {
             funcionariosDAO.update(funcionarios);
             //usuariosDAO.update( viewBean() );
@@ -382,17 +382,16 @@ public class JDlgFuncionarios extends javax.swing.JDialog {
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
-       if (jTxtCodigo.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Pesquise um funcionário antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+     if (jTxtCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise um funcionario antes de excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
         if (Util.perguntar("Deseja excluir ?") == true) {
-           FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+            FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
             funcionariosDAO.delete(viewBean());
         }
+        
         Util.limpar(jTxtCodigo,jTxtNome,  jFmtCpf, jTxtCargo, jTxtCelular, jTxtSalarios, jFmtDataAdmissao);
-          desmarcarCampos();
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed

@@ -51,6 +51,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/produtos20210825153152pic.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
 
+        jMnuCadastros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/admin_person_user_man_2839.png"))); // NOI18N
         jMnuCadastros.setMnemonic('c');
         jMnuCadastros.setText("Cadastros");
 
@@ -110,6 +111,7 @@ public class JfrmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMnuCadastros);
 
+        jMnuMovimentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/admin_user_man_22187.png"))); // NOI18N
         jMnuMovimentos.setText("Movimentos");
 
         jMnuVendas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));

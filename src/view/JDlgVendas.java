@@ -437,9 +437,13 @@ public class JDlgVendas extends javax.swing.JDialog {
         CraVendas vendas = viewBean();
         if (incluir == true) {
             vendasDAO.insert(vendas);
+            
             for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
                 CraVendasProdutos vendasProdutos = controllerVendProd.getBean(ind);
                 vendasProdutos.setCraVendas(vendas);
+                vendasProdutos.setCraDesconto(0.0);  
+                vendasProdutos.setCraObservacao(""); 
+                vendasProdutos.setCraPrecoFinal(0.0);
                 vendasProdutoDAO.insert(vendasProdutos);
             }
         } else {

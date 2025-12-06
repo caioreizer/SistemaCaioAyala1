@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import tools.Util;
@@ -70,6 +71,10 @@ public class JDlgVendas extends javax.swing.JDialog {
         }
     }
 
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
     public CraVendas viewBean() {
         CraVendas vendas = new CraVendas();
         vendas.setCraIdVendas(Util.strToInt(jTxtCodigo1.getText()));
@@ -103,7 +108,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         double somaTotais = 0.0;
 
         for (int i = 0; i < jTable1.getRowCount(); i++) {
-            Object valorTotal = jTable1.getValueAt(i, 4); 
+            Object valorTotal = jTable1.getValueAt(i, 4);
             if (valorTotal != null) {
                 somaTotais += Util.strToDouble(valorTotal.toString());
             }
@@ -403,11 +408,8 @@ public class JDlgVendas extends javax.swing.JDialog {
         Util.habilitar(true, jTxtFormaPagamento, jTxtTotal, jTxtStatus, jTxtFormaPagamento, jFmtData, jCboClientes, jCboFuncionario,
                 jBtnConfirmar, jBtnCancelar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        controllerVendProd.setList(new ArrayList());
         incluir = false;
-
         jTxtFormaPagamento.grabFocus();
-
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -437,12 +439,12 @@ public class JDlgVendas extends javax.swing.JDialog {
         CraVendas vendas = viewBean();
         if (incluir == true) {
             vendasDAO.insert(vendas);
-            
+
             for (int ind = 0; ind < jTable1.getRowCount(); ind++) {
                 CraVendasProdutos vendasProdutos = controllerVendProd.getBean(ind);
                 vendasProdutos.setCraVendas(vendas);
-                vendasProdutos.setCraDesconto(0.0);  
-                vendasProdutos.setCraObservacao(""); 
+                vendasProdutos.setCraDesconto(0.0);
+                vendasProdutos.setCraObservacao("");
                 vendasProdutos.setCraPrecoFinal(0.0);
                 vendasProdutoDAO.insert(vendasProdutos);
             }
@@ -458,7 +460,7 @@ public class JDlgVendas extends javax.swing.JDialog {
         Util.limpar(jTxtCodigo1, jTxtFormaPagamento, jTxtStatus, jTxtTotal, jCboClientes, jCboFuncionario,
                 jFmtData);
         controllerVendProd.setList(new ArrayList());
-       
+
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
@@ -467,21 +469,33 @@ public class JDlgVendas extends javax.swing.JDialog {
         } else {
             if (Util.perguntar("Deseja excluir o produto?") == true) {
                 controllerVendProd.removeBean(jTable1.getSelectedRow());
-                 atualizarTotal();
+                atualizarTotal();
             }
         }
     }//GEN-LAST:event_jBtnExcluirProdActionPerformed
 
     private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
         // TODO add your handling code here:
+        int linSel = jTable1.getSelectedRow();
+
+        if (jTxtCodigo1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Pesquise uma venda antes de alterar", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (linSel == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um produto na tabela para alterar", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return; 
+        }
         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
+        CraVendasProdutos vendasProdutos = controllerVendProd.getBean(jTable1.getSelectedRow());
+        jDlgVendasProdutos.setTelaAnterior(this, vendasProdutos);
         jDlgVendasProdutos.setVisible(true);
     }//GEN-LAST:event_jBtnAlterarProdActionPerformed
 
     private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
         // TODO add your handling code here:
         JDlgVendasProdutos jDlgVendasProdutos = new JDlgVendasProdutos(null, true);
-        jDlgVendasProdutos.setTelaAnterior(this);
+        jDlgVendasProdutos.setTelaAnterior(this, null);
         jDlgVendasProdutos.setVisible(true);
         atualizarTotal();
     }//GEN-LAST:event_jBtnIncluirProdActionPerformed
@@ -561,4 +575,8 @@ public class JDlgVendas extends javax.swing.JDialog {
     private javax.swing.JTextField jTxtStatus;
     private javax.swing.JTextField jTxtTotal;
     // End of variables declaration//GEN-END:variables
+
+    Object getTable1() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

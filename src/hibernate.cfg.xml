@@ -41,11 +41,9 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://10.7.0.51:33062/db_caio_ayala?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">caio_ayala</property>
-    <property name="hibernate.connection.password">caio_ayala</property>
+    <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/db_caio_ayala?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
     <mapping class="bean.CraClientes"/>
     <mapping class="bean.CraFuncionario"/>
     <mapping class="bean.CraProduto"/>

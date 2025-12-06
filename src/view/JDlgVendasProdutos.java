@@ -16,6 +16,7 @@ import tools.Util;
  */
 public class JDlgVendasProdutos extends javax.swing.JDialog {
     JDlgVendas jDlgVendas;
+     boolean incluir;
     /**
      * Creates new form JDlgPedidosProdutos
      */
@@ -34,9 +35,17 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
        
     }
     
-    public void setTelaAnterior(JDlgVendas jDlgVendas) {
+    public void setTelaAnterior(JDlgVendas jDlgVendas, CraVendasProdutos vendasProdutos) {
         this.jDlgVendas = jDlgVendas;
+        if (vendasProdutos != null) {
+            incluir = false;
+            jCboCraProdutos.setSelectedItem(vendasProdutos.getCraProduto());
+            jTxtCraQuantidade.setText(Util.intToStr(vendasProdutos.getCraQuantidade()));        
+        } else {
+            incluir = true;
+        }
     }
+
 
     
 
@@ -172,8 +181,14 @@ public class JDlgVendasProdutos extends javax.swing.JDialog {
         vendasProdutos.setCraProduto((CraProduto) jCboCraProdutos.getSelectedItem());
         vendasProdutos.setCraQuantidade(Util.strToInt(jTxtCraQuantidade.getText()) );
         vendasProdutos.setCraPrecoFinal(Util.strToDouble(jTxtCraValorUnitario.getText()) );                
-        jDlgVendas.controllerVendProd.addBean(vendasProdutos);
+         if (incluir == true) {
+           jDlgVendas.controllerVendProd.addBean(vendasProdutos);
+        } else {
+            jDlgVendas.controllerVendProd.removeBean(jDlgVendas.getjTable1().getSelectedRow());
+            jDlgVendas.controllerVendProd.addBean(vendasProdutos);
+        }
         setVisible(false);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -51,6 +51,18 @@ public class VendasProdutoDAO extends AbstractDAO {
         session.getTransaction().commit();
         return lista;
     }
+     public void deleteProdutos(CraVendas vendas) {
+        List lista = (List) listProdutos(vendas);
+        session.beginTransaction();
+        for (int i = 0; i < lista.size(); i++) {
+            CraVendasProdutos pedidosProdutos = (CraVendasProdutos) lista.get(i);
+            session.flush();
+            session.clear();
+            session.delete(pedidosProdutos);
+        }
+        session.getTransaction().commit();
+    }
+
 
     public Object listProdutos(CraVendas vendas) {
         session.beginTransaction();

@@ -55,7 +55,7 @@ public class ProdutoDAO extends AbstractDAO{
       public Object listNome(String nome) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CraProduto.class);
-        criteria.add(Restrictions.like("nome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("craNome", "%" + nome + "%"));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
@@ -64,7 +64,7 @@ public class ProdutoDAO extends AbstractDAO{
     public Object listValor(double valor) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CraProduto.class);
-        criteria.add(Restrictions.ge("valorUnitario", "%" + valor + "%"));
+        criteria.add(Restrictions.ge("craPreco", valor));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;
@@ -73,8 +73,8 @@ public class ProdutoDAO extends AbstractDAO{
     public Object listNomeValor(String nome, double valor) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(CraProduto.class);
-        criteria.add(Restrictions.like("nome", "%" + nome + "%"));
-        criteria.add(Restrictions.ge("valorUnitario", "%" + valor + "%"));
+        criteria.add(Restrictions.like("craNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("craPreco",  valor ));
         List lista = criteria.list();
         session.getTransaction().commit();
         return lista;

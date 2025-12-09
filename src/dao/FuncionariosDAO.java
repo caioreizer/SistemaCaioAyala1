@@ -6,6 +6,7 @@
 package dao;
 
 import bean.CraFuncionario;
+import bean.CraProduto;
 import bean.CrsUsuarios;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -53,6 +54,34 @@ public class FuncionariosDAO extends AbstractDAO{
         session.getTransaction().commit();        
         return lista;
     }
+    public Object listNome(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CraFuncionario.class);
+        criteria.add(Restrictions.like("craNome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listCpfFunc(String cpf) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CraFuncionario.class);
+        criteria.add(Restrictions.ge("craCpf", cpf));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listNomeCpf(String nome, String cpf) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CraFuncionario.class);
+        criteria.add(Restrictions.like("craNome", "%" + nome + "%"));
+        criteria.add(Restrictions.ge("craCpf", "%" + cpf + "%"  ));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
 
     @Override
     public Object listAll() {

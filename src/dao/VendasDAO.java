@@ -6,6 +6,7 @@
 package dao;
 
 
+import bean.CraProduto;
 import bean.CraVendas;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -51,6 +52,33 @@ public class VendasDAO extends AbstractDAO{
         criteria.add(Restrictions.eq("idvendas", codigo));
         List lista = criteria.list();
         session.getTransaction().commit();        
+        return lista;
+    }
+     public Object listFormaPagamento(String formaPagamento) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CraVendas.class);
+        criteria.add(Restrictions.like("craFormaPagamento", "%" + formaPagamento + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listValor(double valor) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CraVendas.class);
+        criteria.add(Restrictions.ge("craValorUnitario", valor));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listPagamentoValor(String formaPagamento, double valor) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CraVendas.class);
+        criteria.add(Restrictions.like("craFormaPagamento", "%" + formaPagamento + "%"));
+        criteria.add(Restrictions.ge("craValorUnitario",  valor ));
+        List lista = criteria.list();
+        session.getTransaction().commit();
         return lista;
     }
 

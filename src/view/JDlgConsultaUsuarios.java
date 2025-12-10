@@ -4,33 +4,38 @@
  */
 package view;
 
-import dao.FuncionariosDAO;
+import bean.CrsUsuarios;
 import dao.ProdutoDAO;
+import dao.UsuariosDAO;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tools.Util;
+import view.JDlgUsuarios;
 
 /**
  *
  * @author Marcos
  */
-public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
-  ControllerConsultasFuncionarios controllerConsultasFuncionarios;
+public class JDlgConsultaUsuarios extends javax.swing.JDialog {
+  ControllerConsultasUsuarios controllerConsultasUsuarios;
     /**
      * Creates new form JDlgUsuariosPesquisar
      */
  
-    public JDlgConsultaFuncionarios(java.awt.Frame parent, boolean modal) {
+    public JDlgConsultaUsuarios(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        setTitle("Pesquisar Funcionários");
+        setTitle("Pesquisar Usuários");
    
-        controllerConsultasFuncionarios = new ControllerConsultasFuncionarios();
-        FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
+        controllerConsultasUsuarios = new ControllerConsultasUsuarios();
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
         List lista = new ArrayList();
-        controllerConsultasFuncionarios.setList(lista);
-        jTable1.setModel(controllerConsultasFuncionarios);
+        controllerConsultasUsuarios.setList(lista);
+        jTable1.setModel(controllerConsultasUsuarios);
         
     //    controllerUsuarios = new ControllerUsuarios();
     //    UsuariosDAO usuariosDAO = new UsuariosDAO();
@@ -53,11 +58,11 @@ public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
         jTable1 = new javax.swing.JTable();
         jBtnOk = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTxtNome = new javax.swing.JTextField();
-        jTxtCpf = new javax.swing.JTextField();
+        jTxtApelido = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jBtnConsultar = new javax.swing.JButton();
         jBtnPdf = new javax.swing.JButton();
+        jFmtDataNascimento = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,9 +92,9 @@ public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Nome");
+        jLabel1.setText("Apelido");
 
-        jLabel2.setText("Cpf ");
+        jLabel2.setText("Data de nascimento(dd/MM/YYYY)");
 
         jBtnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pesquisar.png"))); // NOI18N
         jBtnConsultar.setText("Consultar");
@@ -112,49 +117,50 @@ public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(20, 20, 20)
                         .addComponent(jScrollPane1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBtnPdf)
                         .addGap(18, 18, 18)
                         .addComponent(jBtnOk))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jFmtDataNascimento))
+                        .addGap(18, 18, 18)
                         .addComponent(jBtnConsultar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 86, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(31, 31, 31)
                         .addComponent(jBtnConsultar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTxtApelido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jFmtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnOk)
                     .addComponent(jBtnPdf))
@@ -177,18 +183,26 @@ public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
 
     private void jBtnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConsultarActionPerformed
         // TODO add your handling code here:
-        FuncionariosDAO funcionariosDAO = new FuncionariosDAO();
-        List lista;
-        if ((jTxtNome.getText().isEmpty() == false) && (jTxtCpf.getText().isEmpty() == false)){
-            lista = (List) funcionariosDAO.listNomeCpf(jTxtNome.getText(), jTxtCpf.getText());
-        }else if (jTxtNome.getText().isEmpty() == false){
-            lista  = (List) funcionariosDAO.listNome(jTxtNome.getText());
-        }else if (jTxtCpf.getText().isEmpty() == false){
-            lista = (List) funcionariosDAO.listCpfFunc((jTxtCpf.getText()));
+        UsuariosDAO usuariosDAO = new UsuariosDAO();
+        List lista = null;
+        if ((jTxtApelido.getText().isEmpty() == false) && (jFmtDataNascimento.getText().isEmpty() == false)){
+            try {
+                lista = (List) usuariosDAO.listApelidoData(jTxtApelido.getText(), Util.strToDate(jFmtDataNascimento.getText()));
+            } catch (ParseException ex) {
+                Logger.getLogger(JDlgConsultaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else if (jTxtApelido.getText().isEmpty() == false){
+            lista  = (List) usuariosDAO.listApelido(jTxtApelido.getText());
+        }else if (jFmtDataNascimento.getText().isEmpty() == false){
+            try {
+                lista = (List) usuariosDAO.listDataNascimento(Util.strToDate(jFmtDataNascimento.getText()));
+            } catch (ParseException ex) {
+                Logger.getLogger(JDlgConsultaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else {
-            lista = (List) funcionariosDAO.listAll();
+            lista = (List) usuariosDAO.listAll();
         }
-        controllerConsultasFuncionarios.setList(lista);
+        controllerConsultasUsuarios.setList(lista);
     }//GEN-LAST:event_jBtnConsultarActionPerformed
 
     private void jBtnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPdfActionPerformed
@@ -224,13 +238,13 @@ public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgConsultaFuncionarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgConsultaUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -252,7 +266,7 @@ public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgConsultaFuncionarios dialog = new JDlgConsultaFuncionarios(new javax.swing.JFrame(), true);
+                JDlgConsultaUsuarios dialog = new JDlgConsultaUsuarios(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -268,11 +282,11 @@ public class JDlgConsultaFuncionarios extends javax.swing.JDialog {
     private javax.swing.JButton jBtnConsultar;
     private javax.swing.JButton jBtnOk;
     private javax.swing.JButton jBtnPdf;
+    private javax.swing.JFormattedTextField jFmtDataNascimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTxtCpf;
-    private javax.swing.JTextField jTxtNome;
+    private javax.swing.JTextField jTxtApelido;
     // End of variables declaration//GEN-END:variables
 }

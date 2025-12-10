@@ -5,7 +5,9 @@
  */
 package dao;
 
+import bean.CraProduto;
 import bean.CrsUsuarios;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -61,6 +63,33 @@ public class UsuariosDAO extends AbstractDAO{
         CrsUsuarios usuario = (CrsUsuarios) criteria.uniqueResult();
         session.getTransaction().commit();
         return usuario;
+    }
+     public Object listApelido(String apelido) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CrsUsuarios.class);
+        criteria.add(Restrictions.like("craApelido", "%" + apelido + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+   public List listDataNascimento(Date dataNascimento) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CrsUsuarios.class);
+        criteria.add(Restrictions.ge("craDataNascimento", dataNascimento));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+    }
+
+    public Object listApelidoData(String apelido, Date dataNascimento) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(CrsUsuarios.class);
+        criteria.add(Restrictions.like("craApelido", "%" + apelido + "%"));
+        criteria.add(Restrictions.ge("craDataNascimento",  dataNascimento ));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
     }
 
 
